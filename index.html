@@ -191,7 +191,7 @@
     <!-- Header -->
     <header>
         <div class="container">
-            <a href="#home" class="brand">Dron's<span>Portfolio</span></a>
+            <a href="#home" class="brand">Dron<span>KAMBALI</span></a>
             <nav class="nav-links">
                 <a href="#home" class="nav-item active">Home</a>
                 <a href="#intro" class="nav-item">Intro</a>
@@ -446,16 +446,27 @@
                         </div>
                     </div>
                 </div>
-                <div class="span-12 ide-widget reveal">
+                <div class="span-8 ide-widget reveal">
                     <div class="ide-header"><div class="ide-tabs"><div class="ide-tab active">index.html</div></div></div>
-                    <div class="ide-content active">
-                        <span class="comm"><!-- Semantic Layout Pattern --></span><br>
-                        <span class="key">&lt;header&gt;</span><br>
-                        &nbsp;&nbsp;<span class="key">&lt;nav&gt;</span>...<span class="key">&lt;/nav&gt;</span><br>
-                        <span class="key">&lt;/header&gt;</span><br>
-                        <span class="key">&lt;main&gt;</span><br>
-                        &nbsp;&nbsp;<span class="key">&lt;section&gt;</span>...<span class="key">&lt;/section&gt;</span><br>
-                        <span class="key">&lt;/main&gt;</span>
+                    <div class="ide-content active" style="font-size:0.75rem;">
+                        <span class="comm">&lt;!-- Structured Modal Template --&gt;</span><br>
+                        <span class="key">&lt;section</span> <span class="func">class</span>=<span class="str">"form-module"</span><span class="key">&gt;</span><br>
+                        &nbsp;&nbsp;<span class="key">&lt;h3&gt;</span>User Enrollment<span class="key">&lt;/h3&gt;</span><br>
+                        &nbsp;&nbsp;<span class="key">&lt;form&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="key">&lt;label&gt;</span>Full Name<span class="key">&lt;/label&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="key">&lt;input</span> <span class="func">type</span>=<span class="str">"text"</span> <span class="func">placeholder</span>=<span class="str">"Enter name..."</span><span class="key">&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="key">&lt;button</span> <span class="func">type</span>=<span class="str">"submit"</span><span class="key">&gt;</span>Register<span class="key">&lt;/button&gt;</span><br>
+                        &nbsp;&nbsp;<span class="key">&lt;/form&gt;</span><br>
+                        <span class="key">&lt;/section&gt;</span>
+                    </div>
+                </div>
+                <div class="span-4 glass-card reveal" style="display:flex; flex-direction:column; justify-content:center; background:rgba(255,255,255,0.02);">
+                    <h5 style="margin-bottom:1rem; font-size:0.6rem; letter-spacing:1px; opacity:0.5;">RENDERED OUTPUT</h5>
+                    <div style="padding:1.5rem; background:var(--bg-elevated); border:1px solid var(--border); border-radius:12px;">
+                        <h4 style="font-size:0.9rem; margin-bottom:1rem;">User Enrollment</h4>
+                        <div style="font-size:0.75rem; margin-bottom:0.4rem; opacity:0.7;">Full Name</div>
+                        <div style="width:100%; height:32px; border:1px solid var(--border); border-radius:6px; margin-bottom:1rem; padding:8px; font-size:0.7rem; color:var(--text-muted);">Enter name...</div>
+                        <div style="background:var(--primary); color:#000; padding:8px; border-radius:6px; text-align:center; font-size:0.75rem; font-weight:700;">Register</div>
                     </div>
                 </div>
             </div>
@@ -505,23 +516,27 @@
                         </div>
                     </div>
                 </div>
-                <div class="span-12 reveal" style="margin-top:2rem;">
-                    <div class="grid-3">
-                        <div class="stat-card">
-                            <i data-lucide="zap" style="color:var(--primary); margin-bottom:1rem;"></i>
-                            <h4 style="font-size:0.9rem;">Zero Frameworks</h4>
-                            <p style="font-size:0.7rem; color:var(--text-muted); margin-top:0.5rem;">Pure Vanilla CSS for performance and control.</p>
-                        </div>
-                        <div class="stat-card">
-                            <i data-lucide="layers" style="color:var(--secondary); margin-bottom:1rem;"></i>
-                            <h4 style="font-size:0.9rem;">BEM Methodology</h4>
-                            <p style="font-size:0.7rem; color:var(--text-muted); margin-top:0.5rem;">Scalable and predictable class naming.</p>
-                        </div>
-                        <div class="stat-card">
-                            <i data-lucide="box" style="color:var(--accent); margin-bottom:1rem;"></i>
-                            <h4 style="font-size:0.9rem;">Modern Box Model</h4>
-                            <p style="font-size:0.7rem; color:var(--text-muted); margin-top:0.5rem;">Exact sizing with border-box control.</p>
-                        </div>
+                <div class="span-8 ide-widget reveal">
+                    <div class="ide-header"><div class="ide-tabs"><div class="ide-tab active">styles.css</div></div></div>
+                    <div class="ide-content active" style="font-size:0.75rem;">
+                        <span class="comm">/* CSS Variables & Glow Design */</span><br>
+                        <span class="key">.form-module</span> {<br>
+                        &nbsp;&nbsp;<span class="func">background</span>: <span class="str">#11141d</span>;<br>
+                        &nbsp;&nbsp;<span class="func">border</span>: <span class="num">1px</span> solid <span class="str">#10b981</span>;<br>
+                        &nbsp;&nbsp;<span class="func">box-shadow</span>: <span class="num">0</span> <span class="num">0</span> <span class="num">15px</span> <span class="func">rgba</span>(<span class="num">16</span>, <span class="num">185</span>, <span class="num">129</span>, <span class="num">0.3</span>);<br>
+                        }<br>
+                        <span class="key">button</span>:<span class="func">hover</span> {<br>
+                        &nbsp;&nbsp;<span class="func">filter</span>: <span class="func">brightness</span>(<span class="num">1.2</span>);<br>
+                        &nbsp;&nbsp;<span class="func">cursor</span>: pointer;<br>
+                        }
+                    </div>
+                </div>
+                <div class="span-4 glass-card reveal" style="display:flex; flex-direction:column; justify-content:center; background:rgba(255,255,255,0.02);">
+                    <h5 style="margin-bottom:1rem; font-size:0.6rem; letter-spacing:1px; opacity:0.5;">RENDERED OUTPUT</h5>
+                    <div style="padding:1.5rem; background:#11141d; border:1px solid #10b981; border-radius:12px; box-shadow:0 0 15px rgba(16, 185, 129, 0.2);">
+                        <h4 style="font-size:0.9rem; margin-bottom:1rem; color:#fff;">User Enrollment</h4>
+                        <div style="width:100%; height:32px; border:1px solid rgba(255,255,255,0.1); border-radius:6px; margin-bottom:1rem; background:rgba(255,255,255,0.03);"></div>
+                        <div style="background:#10b981; color:#000; padding:8px; border-radius:6px; text-align:center; font-size:0.75rem; font-weight:700; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.4);">Register</div>
                     </div>
                 </div>
             </div>
@@ -564,17 +579,24 @@
                         <span class="pill" style="margin:0;">Shadow DOM Logic</span>
                     </div>
                 </div>
-                <div class="span-12 ide-widget reveal" style="margin-top:2rem;">
-                    <div class="ide-header"><div class="ide-tabs"><div class="ide-tab active">interaction.js</div></div></div>
-                    <div class="ide-content active">
-                        <span class="comm">// Simple DOM Event Interaction</span><br>
-                        <span class="key">const</span> btn = document.<span class="func">getElementById</span>(<span class="str">'actionBtn'</span>);<br>
-                        <span class="key">const</span> text = document.<span class="func">getElementById</span>(<span class="str">'statusText'</span>);<br>
-                        <br>
-                        btn.<span class="func">addEventListener</span>(<span class="str">'click'</span>, () => {<br>
-                        &nbsp;&nbsp;text.innerText = <span class="str">'Interactivity Enabled!'</span>;<br>
-                        &nbsp;&nbsp;text.style.color = <span class="str">'var(--primary)'</span>;<br>
-                        });
+                <div class="span-8 ide-widget reveal">
+                    <div class="ide-header"><div class="ide-tabs"><div class="ide-tab active">validate.js</div></div></div>
+                    <div class="ide-content active" style="font-size:0.75rem;">
+                        <span class="comm">// Client-Side Form Validation</span><br>
+                        <span class="key">if</span> (input.value === <span class="str">''</span>) {<br>
+                        &nbsp;&nbsp;errorText.<span class="func">textContent</span> = <span class="str">'Name is required!'</span>;<br>
+                        &nbsp;&nbsp;input.style.border = <span class="str">'1px solid #ef4444'</span>;<br>
+                        } <span class="key">else</span> {<br>
+                        &nbsp;&nbsp;alert(<span class="str">'Success!'</span>);<br>
+                        }
+                    </div>
+                </div>
+                <div class="span-4 glass-card reveal" style="display:flex; flex-direction:column; justify-content:center; background:rgba(255,255,255,0.02);">
+                    <h5 style="margin-bottom:1rem; font-size:0.6rem; letter-spacing:1px; opacity:0.5;">RENDERED OUTPUT</h5>
+                    <div style="padding:1.2rem; background:#11141d; border:1px solid #10b981; border-radius:12px;">
+                        <div style="width:100%; height:32px; border:1px solid #ef4444; border-radius:6px; margin-bottom:0.5rem; background:rgba(239, 68, 68, 0.05);"></div>
+                        <div style="font-size:0.65rem; color:#ef4444; font-weight:600; margin-bottom:1rem;">Name is required!</div>
+                        <div style="background:#10b981; color:#000; padding:8px; border-radius:6px; text-align:center; font-size:0.75rem; font-weight:700; opacity:0.5;">Register</div>
                     </div>
                 </div>
             </div>
@@ -611,13 +633,26 @@
                         </div>
                     </div>
                 </div>
-                <div class="span-6 glass-card reveal">
-                    <h5 style="margin-bottom:1rem; color:#61dafb;">STATE MANAGEMENT</h5>
-                    <p class="text-muted" style="font-size:0.85rem;">Utilizing modern context providers and state hooks to maintain a single source of truth throughout the application lifecycle.</p>
+                <div class="span-8 ide-widget reveal">
+                    <div class="ide-header"><div class="ide-tabs"><div class="ide-tab active">Counter.jsx</div></div></div>
+                    <div class="ide-content active" style="font-size:0.75rem;">
+                        <span class="comm">// Simple State Management</span><br>
+                        <span class="key">function</span> <span class="func">Counter</span>() {<br>
+                        &nbsp;&nbsp;<span class="key">const</span> [count, setCount] = <span class="func">useState</span>(<span class="num">0</span>);<br>
+                        &nbsp;&nbsp;<span class="key">return</span> (<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="key">&lt;button</span> <span class="func">onClick</span>={<span class="key">() =&gt;</span> <span class="func">setCount</span>(count + <span class="num">1</span>)}<span class="key">&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Count: {count}<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="key">&lt;/button&gt;</span><br>
+                        &nbsp;&nbsp;);<br>
+                        }
+                    </div>
                 </div>
-                <div class="span-6 glass-card reveal">
-                    <h5 style="margin-bottom:1rem; color:#61dafb;">ROUTING & NAVIGATION</h5>
-                    <p class="text-muted" style="font-size:0.85rem;">Declarative routing patterns using React Router to create seamless page transitions without full browser refreshes.</p>
+                <div class="span-4 glass-card reveal" style="display:flex; flex-direction:column; justify-content:center; background:rgba(255,255,255,0.02);">
+                    <h5 style="margin-bottom:1rem; font-size:0.6rem; letter-spacing:1px; opacity:0.5;">RENDERED OUTPUT</h5>
+                    <div style="padding:2rem; background:rgba(97, 218, 251, 0.05); border:1px solid rgba(97, 218, 251, 0.2); border-radius:12px; display:flex; flex-direction:column; align-items:center; gap:1rem;">
+                        <div style="font-size:1.5rem; font-weight:800; color:#61dafb;">12</div>
+                        <div style="background:#61dafb; color:#000; padding:8px 20px; border-radius:30px; font-size:0.75rem; font-weight:700;">Count: 12</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -644,19 +679,25 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="span-12 ide-widget reveal">
+                <div class="span-8 ide-widget reveal">
                     <div class="ide-header"><div class="ide-tabs"><div class="ide-tab active">server.js</div></div></div>
-                    <div class="ide-content active">
-                        <span class="comm">// Express.js Minimal Server</span><br>
-                        <span class="key">const</span> express = <span class="func">require</span>(<span class="str">'express'</span>);<br>
-                        <span class="key">const</span> app = <span class="func">express</span>();<br>
-                        <br>
-                        app.<span class="func">get</span>(<span class="str">'/api/health'</span>, (req, res) => {<br>
-                        &nbsp;&nbsp;res.<span class="func">status</span>(<span class="num">200</span>).<span class="func">json</span>({ status: <span class="str">'active'</span> });<br>
-                        });<br>
-                        <br>
-                        app.<span class="func">listen</span>(<span class="num">3000</span>, () => console.<span class="func">log</span>(<span class="str">'Port 3000 Open'</span>));
+                    <div class="ide-content active" style="font-size:0.75rem;">
+                        <span class="comm">// API Endpoint with Logic</span><br>
+                        app.<span class="func">post</span>(<span class="str">'/api/register'</span>, (req, res) => {<br>
+                        &nbsp;&nbsp;<span class="key">const</span> { name } = req.body;<br>
+                        &nbsp;&nbsp;<span class="key">if</span> (!name) <span class="key">return</span> res.<span class="func">status</span>(<span class="num">400</span>).<span class="func">send</span>(<span class="str">'Missing Data'</span>);<br>
+                        &nbsp;&nbsp;<span class="comm">// Database insertion here</span><br>
+                        &nbsp;&nbsp;res.<span class="func">json</span>({ msg: <span class="str">'User Saved'</span>, id: <span class="num">101</span> });<br>
+                        });
                     </div>
+                </div>
+                <div class="span-4 glass-card reveal" style="display:flex; flex-direction:column; justify-content:center; background:rgba(255,255,255,0.02);">
+                    <h5 style="margin-bottom:1rem; font-size:0.6rem; letter-spacing:1px; opacity:0.5;">SERVER RESPONSE</h5>
+                    <div style="padding:1.5rem; background:#0d0e12; border:1px solid var(--border); border-radius:12px; font-family:var(--font-mono); font-size:0.7rem;">
+                        <span style="color:#61afef;">{</span><br>
+                        &nbsp;&nbsp;<span style="color:#98c379;">"msg"</span>: <span style="color:#98c379;">"User Saved"</span>,<br>
+                        &nbsp;&nbsp;<span style="color:#98c379;">"id"</span>: <span style="color:#d19a66;">101</span><br>
+                        <span style="color:#61afef;">}</span>
                     </div>
                 </div>
             </div>
