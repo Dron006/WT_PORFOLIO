@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dron G Kambali | Professional Engineering Portfolio</title>
+    <meta name="description" content="Software Engineering & Web Technologies Portfolio of Dron G Kambali.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-base: #020203;
+            --bg-surface: #0a0b10;
+            --bg-elevated: #11141d;
+            --primary: #10b981;
+            --primary-glow: rgba(16, 185, 129, 0.4);
+            --secondary: #6366f1;
+            --accent: #f59e0b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            --glass: rgba(10, 11, 16, 0.85);
+        }
+
+        /* --- Reset --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: default; }
+        html { 
+            scroll-behavior: smooth; 
+            background-color: var(--bg-base);
+            /* Hide scrollbar */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        html::-webkit-scrollbar {
+            display: none;
+        }
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            /* Hide scrollbar */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Bg Grid */
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px; z-index: -1; pointer-events: none;
+        }
+
+        h1, h2, h3, h4, .brand { font-family: var(--font-heading); font-weight: 700; letter-spacing: -0.02em; }
+        a, button { cursor: pointer; text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+
+        /* Navigation */
+        header {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: calc(100% - 40px);
+            max-width: 1200px; background: var(--glass); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--border); border-radius: 50px; z-index: 1000; padding: 0.5rem 1.5rem;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+        header .container { display: flex; justify-content: space-between; align-items: center; padding: 0; width: 100%; }
+
+        .brand { font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+        .brand span { color: var(--primary); }
+
+        .nav-links { display: flex; gap: 0.25rem; align-items: center; }
+        .nav-item { padding: 0.6rem 1.1rem; border-radius: 30px; font-size: 0.85rem; font-weight: 500; color: var(--text-muted); }
+        .nav-item:hover, .nav-item.active { color: var(--primary); background: rgba(16, 185, 129, 0.1); }
+
+        /* Dropdowns */
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            position: absolute; top: 130%; left: 50%; transform: translateX(-50%) translateY(10px);
+            background: var(--bg-surface); border: 1px solid var(--border); border-radius: 16px;
+            min-width: 220px; padding: 0.75rem; opacity: 0; visibility: hidden; transition: var(--transition);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .dropdown-item { padding: 0.75rem 1rem; border-radius: 10px; font-size: 0.8rem; color: var(--text-muted); display: block; }
+        .dropdown-item:hover { color: var(--text-main); background: rgba(255,255,255,0.05); }
+
+        .menu-btn { display: none; background: none; border: none; color: var(--text-main); }
+
+        /* Sections */
+        section { padding: 140px 0; display: none; opacity: 0; transform: scale(0.98); transition: var(--transition); }
+        section.active { display: block; opacity: 1; transform: scale(1); }
+
+        /* UI Components */
+        .pill { display: inline-flex; align-items: center; padding: 4px 14px; background: rgba(16, 185, 129, 0.1); color: var(--primary); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 20px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.5rem; }
+        .glass-card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: 24px; padding: 2.5rem; transition: var(--transition); position: relative; overflow: hidden; }
+        .glass-card:hover { transform: translateY(-8px); border-color: rgba(16, 185, 129, 0.4); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .section-title { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1; margin-bottom: 4rem; text-align: center; }
+        .gradient-text { background: linear-gradient(135deg, #fff 30%, var(--primary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* Layout Grids */
+        .grid-12 { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; }
+        .span-6 { grid-column: span 6; }
+        .span-4 { grid-column: span 4; }
+        .span-8 { grid-column: span 8; }
+        .span-12 { grid-column: span 12; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+        /* Animations */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.23, 1, 0.32, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- IDE Style Code Widget --- */
+        .ide-widget { background: #0d0e12; border: 1px solid var(--border); border-radius: 20px; overflow: hidden; margin: 2rem 0; box-shadow: 0 40px 100px rgba(0,0,0,0.7); }
+        .ide-header { background: #16171d; padding: 0.75rem 1.25rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+        .ide-tabs { display: flex; gap: 1rem; }
+        .ide-tab { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); cursor: pointer; transition: var(--transition); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .ide-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+        .ide-content { padding: 2rem; font-family: var(--font-mono); font-size: 0.85rem; line-height: 1.7; color: #d1d5db; display: none; overflow-x: auto; }
+        .ide-content.active { display: block; }
+        .key { color: #c678dd; } .func { color: #61afef; } .str { color: #98c379; } .comm { color: #5c6370; } .num { color: #d19a66; }
+
+        /* --- Browser Mockups --- */
+        .browser-mock { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #050608; }
+        .browser-top { height: 32px; background: #1c1d24; display: flex; align-items: center; padding: 0 1rem; gap: 6px; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
+        .screen { width: 100%; height: auto; display: block; position: relative; background: #000; }
+        .screen img { width: 100%; height: auto; display: block; }
+        .placeholder-txt { font-size: 0.7rem; opacity: 0.3; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- Tables --- */
+        .table-scroll { width: 100%; overflow-x: auto; border-radius: 16px; border: 1px solid var(--border); margin: 2rem 0; }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th { background: rgba(255,255,255,0.02); padding: 1.2rem 1.5rem; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); }
+        td { padding: 1.2rem 1.5rem; font-size: 0.85rem; color: #cbd5e1; border-bottom: 1px solid var(--border); }
+        tr:hover td { background: rgba(16, 185, 129, 0.03); color: var(--text-main); }
+        .badge { font-size: 0.65rem; font-weight: 800; padding: 3px 8px; border-radius: 5px; color: #fff; }
+        .get { background: #10b981; } .post { background: #3b82f6; } .put { background: #f59e0b; } .del { background: #ef4444; }
+
+        /* --- Stats --- */
+        .stat-card { text-align: center; padding: 2rem; border-radius: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); }
+        .stat-val { font-size: 2.5rem; font-weight: 800; color: var(--primary); line-height: 1; }
+        .stat-label { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Mobile Drawer */
+        .mobile-drawer { position: fixed; top: 0; right: -100%; width: 100%; height: 100%; background: var(--bg-base); z-index: 2000; padding: 100px 2rem; transition: 0.6s cubic-bezier(0.65, 0, 0.35, 1); display: flex; flex-direction: column; gap: 2rem; }
+        .mobile-drawer.open { right: 0; }
+        .drawer-item { font-size: 2.5rem; font-weight: 800; color: var(--text-muted); font-family: var(--font-heading); }
+        .drawer-item.active { color: var(--primary); }
+
+        /* --- Responsive Design System --- */
+        @media (max-width: 1024px) {
+            .container { padding: 0 2rem; }
+            .section-title { font-size: 3rem; }
+        }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .menu-btn { display: block; }
+            .grid-12 > * { grid-column: span 12 !important; }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            header { border-radius: 20px; top: 10px; width: calc(100% - 20px); }
+            section { padding: 80px 0; }
+            .section-title { font-size: 2.5rem; margin-bottom: 2rem; }
+            .ide-content { padding: 1rem; font-size: 0.75rem; }
+            .stat-card { padding: 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 1.2rem; }
+            header { padding: 0.5rem 1rem; }
+            .brand { font-size: 1.1rem; }
+            .pill { font-size: 0.6rem; padding: 4px 10px; }
+            .glass-card { padding: 1.5rem; }
+            .gradient-text { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="#home" class="brand">D.G.<span>KAMBALI</span></a>
+            <nav class="nav-links">
+                <a href="#home" class="nav-item active">Home</a>
+                <a href="#intro" class="nav-item">Intro</a>
+                <div class="dropdown">
+                    <span class="nav-item">Web Tech <i data-lucide="chevron-down" style="width:14px;"></i></span>
+                    <div class="dropdown-menu">
+                        <a href="#course-overview" class="dropdown-item">Academic Overview</a>
+                        <a href="#learning-html" class="dropdown-item">HTML Architecture</a>
+                        <a href="#learning-css" class="dropdown-item">CSS Responsive</a>
+                        <a href="#learning-js" class="dropdown-item">JavaScript DOM</a>
+                        <a href="#learning-node" class="dropdown-item">Node.js / Express</a>
+                        <a href="#learning-react" class="dropdown-item">React.js Hub</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="nav-item">CMS Project <i data-lucide="chevron-down" style="width:14px;"></i></span>
+                    <div class="dropdown-menu">
+                        <a href="#project-overview" class="dropdown-item">What is CMS?</a>
+                        <a href="#project-analysis" class="dropdown-item">Requirements</a>
+                        <a href="#project-design" class="dropdown-item">System Architecture</a>
+                        <a href="#project-showcase" class="dropdown-item">Visual Showcase</a>
+                        <a href="#project-implementation" class="dropdown-item">Implementation</a>
+                        <a href="#project-testing" class="dropdown-item">Requirements & Testing</a>
+                    </div>
+                </div>
+                <a href="#certificate" class="nav-item">DevOps</a>
+                <a href="#reflection" class="nav-item">Reflection</a>
+            </nav>
+            <button class="menu-btn" onclick="toggleDrawer()"><i data-lucide="menu"></i></button>
+        </div>
+    </header>
+
+    <!-- Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <button style="position: absolute; top: 30px; right: 30px; background: none; border: none; color: #fff;" onclick="toggleDrawer()"><i data-lucide="x" style="width:40px; height:40px;"></i></button>
+        <a href="#home" class="drawer-item" onclick="toggleDrawer()">Home</a>
+        <a href="#intro" class="drawer-item" onclick="toggleDrawer()">Intro</a>
+        <a href="#project-overview" class="drawer-item" onclick="toggleDrawer()">CMS Project</a>
+        <a href="#certificate" class="drawer-item" onclick="toggleDrawer()">DevOps</a>
+        <a href="#reflection" class="drawer-item" onclick="toggleDrawer()">Reflection</a>
+    </div>
+
+    <main class="container">
+
+        <!-- PAGE 1: HOME -->
+        <section id="home" class="page-section active">
+            <div style="min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                <span class="pill reveal">IV Semester · Computer Science</span>
+                <h1 class="gradient-text reveal">CRAFTING DIGITAL<br>EXPERIENCES</h1>
+                <p style="max-width: 650px; font-size: 1.1rem; color: var(--text-muted); margin-bottom: 3rem;" class="reveal">
+                    I am <span style="color:var(--primary); font-weight:600;">Dron G Kambali</span>, a Full-Stack Engineer in training. I bridge the gap between complex system architecture and intuitive, high-fidelity user interfaces using the MERN stack and Next.js.
+                </p>
+                <div style="display: flex; gap: 1rem;" class="reveal">
+                    <a href="#project-overview" style="background:var(--primary); color:#000; padding:1.2rem 2.5rem; border-radius:14px; font-weight:700;">View Showcase</a>
+                    <a href="#intro" style="border:1px solid var(--border); padding:1.2rem 2.5rem; border-radius:14px; font-weight:600;">Full Profile</a>
+                </div>
+            </div>
+
+            <div class="grid-12">
+                <div class="span-6 glass-card reveal">
+                    <h5 style="color:var(--primary); margin-bottom:0.5rem;">STUDENT IDENTITY</h5>
+                    <h3>Dron G Kambali</h3>
+                    <p class="text-muted" style="margin-bottom: 2rem;">KLE Technological University, Hubbali</p>
+                    <div style="display:grid; gap:0.5rem; font-family:var(--font-mono); font-size:0.8rem;">
+                        <div style="display:flex; justify-content:space-between;"><span>USN:</span><span style="color:var(--primary);">01FE24BCS141</span></div>
+                        <div style="display:flex; justify-content:space-between;"><span>EMAIL:</span><span>01fe24bcs141@kletech.ac.in</span></div>
+                    </div>
+                </div>
+                <div class="span-6 glass-card reveal" style="border-bottom: 4px solid var(--primary);">
+                    <h5 style="color:var(--primary); margin-bottom:0.5rem;">ACADEMIC FOCUS</h5>
+                    <div style="display:grid; gap:1.5rem; margin-top:1.5rem;">
+                        <div>
+                            <h4 style="font-size: 1rem;">24ECSP304 — Web Technologies</h4>
+                            <p class="text-muted" style="font-size: 0.8rem;">React, Node.js, Express, MongoDB, REST APIs</p>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 1rem;">25ECSC213 — Software Engineering</h4>
+                            <p class="text-muted" style="font-size: 0.8rem;">Agile, UML Design, Requirement Analysis, Testing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="intro" class="page-section">
+            <h2 class="section-title">Professional Profile</h2>
+            <div class="grid-12">
+                <div class="span-12 glass-card reveal">
+                    <div class="grid-2">
+                        <div>
+                            <h3 style="margin-bottom: 1.5rem;">The Engineering Mindset</h3>
+                            <p class="text-muted" style="font-size: 1.1rem; line-height: 1.8;">
+                                Hello, I'm Dron G Kambali, a Computer Science student at KLE Technological University with a vision for building the future of the web. I specialize in turning complex logic into fluid, high-performance user experiences. My approach blends rigorous software engineering principles with modern design aesthetics.
+                            </p>
+                            <p class="text-muted" style="margin-top: 1rem; font-size: 1rem;">
+                                From architecting robust RESTful backends to crafting pixel-perfect responsive frontends, I thrive at the intersection of functionality and form.
+                            </p>
+                            
+                            <div style="margin-top: 2.5rem;">
+                                <h4 style="margin-bottom: 1.2rem; font-size: 0.9rem; letter-spacing: 2px; color: var(--primary);">TECHNICAL PROFICIENCY</h4>
+                                <div style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+                                    <div class="pill" style="margin-bottom:0; background:rgba(255,255,255,0.03); color:var(--text-main); border-color:var(--border);">HTML5</div>
+                                    <div class="pill" style="margin-bottom:0; background:rgba(255,255,255,0.03); color:var(--text-main); border-color:var(--border);">CSS3</div>
+                                    <div class="pill" style="margin-bottom:0; background:rgba(255,255,255,0.03); color:var(--text-main); border-color:var(--border);">JavaScript (ES6+)</div>
+                                    <div class="pill" style="margin-bottom:0; background:rgba(56, 189, 248, 0.1); color:#38bdf8; border-color:rgba(56, 189, 248, 0.2);">TailwindCSS</div>
+                                    <div class="pill" style="margin-bottom:0; background:rgba(97, 218, 251, 0.1); color:#61dafb; border-color:rgba(97, 218, 251, 0.2);">React.js</div>
+                                    <div class="pill" style="margin-bottom:0; background:rgba(0, 0, 0, 0.2); color:#fff; border-color:var(--border);">Next.js</div>
+                                    <div class="pill" style="margin-bottom:0; background:rgba(104, 160, 99, 0.1); color:#68a063; border-color:rgba(104, 160, 99, 0.2);">Express.js</div>
+                                    <div class="pill" style="margin-bottom:0; background:rgba(240, 80, 50, 0.1); color:#f05032; border-color:rgba(240, 80, 50, 0.2);">Git</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display:flex; flex-direction:column; gap:1.5rem; justify-content:center; align-items:flex-end;">
+                            <div class="stat-card" style="width:100%; max-width:300px; background:linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, transparent 100%);">
+                                <div class="stat-val">IV</div>
+                                <div class="stat-label">Semester</div>
+                            </div>
+                            <div class="stat-card" style="width:100%; max-width:300px; background:linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, transparent 100%);">
+                                <div class="stat-val">CSE</div>
+                                <div class="stat-label">Specialization</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 3: COURSE OVERVIEW -->
+        <section id="course-overview" class="page-section">
+            <h2 class="section-title">Academic Overview</h2>
+            <div class="grid-12">
+                <!-- Web Technologies -->
+                <div class="span-12 glass-card reveal" style="margin-bottom: 2rem; border-left: 5px solid var(--primary);">
+                    <div class="grid-12">
+                        <div class="span-12">
+                            <span class="pill">24ECSP304</span>
+                            <h3 style="margin-bottom: 1rem;">Web Technologies</h3>
+                            <p class="text-muted" style="margin-bottom: 1.5rem; font-size: 0.95rem;">
+                                A comprehensive study of modern web systems, focusing on both client-side interactivity and robust server-side architectures.
+                            </p>
+                            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
+                                <ul style="display:grid; gap:0.6rem; font-size: 0.85rem;">
+                                    <li style="display:flex; gap:10px;"><i data-lucide="code-2" style="width:16px; color:var(--primary);"></i> HTML5 & CSS3</li>
+                                    <li style="display:flex; gap:10px;"><i data-lucide="zap" style="width:16px; color:var(--primary);"></i> JS (ES6+)</li>
+                                </ul>
+                                <ul style="display:grid; gap:0.6rem; font-size: 0.85rem;">
+                                    <li style="display:flex; gap:10px;"><i data-lucide="layers" style="width:16px; color:var(--primary);"></i> React.js</li>
+                                    <li style="display:flex; gap:10px;"><i data-lucide="server" style="width:16px; color:var(--primary);"></i> Express.js</li>
+                                </ul>
+                                <ul style="display:grid; gap:0.6rem; font-size: 0.85rem;">
+                                    <li style="display:flex; gap:10px;"><i data-lucide="database" style="width:16px; color:var(--primary);"></i> MongoDB & SQL</li>
+                                    <li style="display:flex; gap:10px;"><i data-lucide="globe" style="width:16px; color:var(--primary);"></i> WAMP Server</li>
+                                </ul>
+                                <ul style="display:grid; gap:0.6rem; font-size: 0.85rem;">
+                                    <li style="display:flex; gap:10px;"><i data-lucide="cpu" style="width:16px; color:var(--primary);"></i> REST APIs</li>
+                                    <li style="display:flex; gap:10px;"><i data-lucide="layout" style="width:16px; color:var(--primary);"></i> Responsive</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Software Engineering -->
+                <div class="span-12 glass-card reveal" style="border-left: 5px solid var(--secondary);">
+                    <div class="grid-12">
+                        <div class="span-12">
+                            <span class="pill" style="background:rgba(99, 102, 241, 0.1); color:var(--secondary); border-color:rgba(99, 102, 241, 0.2);">25ECSC213</span>
+                            <h3 style="margin-bottom: 1rem;">Software Engineering</h3>
+                            
+                            <div style="margin-bottom: 2rem;">
+                                <h5 style="color:var(--secondary); font-size:0.75rem; margin-bottom:0.5rem; letter-spacing:1px;">COURSE DESCRIPTION</h5>
+                                <p class="text-muted" style="font-size: 0.9rem; line-height: 1.6;">
+                                    This course focused on systematic software lifecycles. Covers modern Agile management, Requirements Engineering, UML Modeling, and automated QA pipelines.
+                                </p>
+                            </div>
+
+                            <div class="grid-3" style="gap: 2rem;">
+                                <div>
+                                    <h5 style="color:var(--text-main); font-size:0.8rem; margin-bottom:0.75rem;">Agile & Backlogs</h5>
+                                    <ul style="display:grid; gap:0.6rem; font-size: 0.8rem; color:var(--text-muted);">
+                                        <li>• Scrum, XP, and SAFe</li>
+                                        <li>• Sprint Planning & Velocity</li>
+                                        <li>• Backlog Management</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 style="color:var(--text-main); font-size:0.8rem; margin-bottom:0.75rem;">UML & Modeling</h5>
+                                    <ul style="display:grid; gap:0.6rem; font-size: 0.8rem; color:var(--text-muted);">
+                                        <li>• Use Case & Class Diagrams</li>
+                                        <li>• Sequence & State Diagrams</li>
+                                        <li>• Functional/Non-functional</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 style="color:var(--text-main); font-size:0.8rem; margin-bottom:0.75rem;">QA & DevOps</h5>
+                                    <ul style="display:grid; gap:0.6rem; font-size: 0.8rem; color:var(--text-muted);">
+                                        <li>• Selenium & JUnit Automation</li>
+                                        <li>• Jenkins CI/CD Pipelines</li>
+                                        <li>• TDD & White/Black Box</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 4: HTML ARCHITECTURE -->
+        <section id="learning-html" class="page-section">
+            <span class="pill">Module 01: Foundations</span>
+            <h2 class="section-title" style="text-align: left;">High-Performance HTML Architecture</h2>
+            <div class="grid-12">
+                <div class="span-8 glass-card reveal">
+                    <h3 style="margin-bottom: 1.5rem;">Semantic Document Engineering</h3>
+                    <p class="text-muted" style="line-height: 1.7; margin-bottom: 2rem;">
+                        The core of my approach is moving beyond the "div-only" mindset to create machine-readable, accessible document structures. By utilizing semantic HTML5 tags, we establish a clear information hierarchy that enhances SEO, accessibility, and maintainability.
+                    </p>
+                    <div class="grid-2" style="gap: 2rem;">
+                        <div>
+                            <h5 style="color:var(--primary); font-size:0.8rem; margin-bottom:0.8rem;">STRUCTURAL SEMANTICS</h5>
+                            <ul style="display:grid; gap:0.6rem; font-size: 0.85rem; color:var(--text-muted);">
+                                <li style="display:flex; gap:10px;"><i data-lucide="check-circle" style="width:14px; color:var(--primary);"></i> section, article, aside for scoping</li>
+                                <li style="display:flex; gap:10px;"><i data-lucide="check-circle" style="width:14px; color:var(--primary);"></i> header, nav, footer for orientation</li>
+                                <li style="display:flex; gap:10px;"><i data-lucide="check-circle" style="width:14px; color:var(--primary);"></i> main as the unique document core</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 style="color:var(--primary); font-size:0.8rem; margin-bottom:0.8rem;">ACCESSIBILITY (ARIA)</h5>
+                            <ul style="display:grid; gap:0.6rem; font-size: 0.85rem; color:var(--text-muted);">
+                                <li style="display:flex; gap:10px;"><i data-lucide="eye" style="width:14px; color:var(--primary);"></i> Optimized for Screen Readers</li>
+                                <li style="display:flex; gap:10px;"><i data-lucide="mouse-pointer" style="width:14px; color:var(--primary);"></i> Proper Focus Management</li>
+                                <li style="display:flex; gap:10px;"><i data-lucide="terminal" style="width:14px; color:var(--primary);"></i> Meaningful Alt & Labelling</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="span-4 glass-card reveal" style="background:rgba(16, 185, 129, 0.05); border-color:rgba(16, 185, 129, 0.2);">
+                    <h5 style="margin-bottom:1.5rem; letter-spacing:1px;">TECHNICAL SPEC</h5>
+                    <div style="display:grid; gap:1.2rem;">
+                        <div>
+                            <div style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; margin-bottom:0.3rem;">Standard</div>
+                            <div style="font-size:0.9rem; font-weight:700;">W3C HTML5.3 Compliance</div>
+                        </div>
+                        <div>
+                            <div style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; margin-bottom:0.3rem;">Metadata</div>
+                            <div style="font-size:0.9rem; font-weight:700;">Full SEO & Social Graph</div>
+                        </div>
+                        <div>
+                            <div style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; margin-bottom:0.3rem;">Engine</div>
+                            <div style="font-size:0.9rem; font-weight:700;">V8 Optimization Ready</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span-12 ide-widget reveal">
+                    <div class="ide-header"><div class="ide-tabs"><div class="ide-tab active">index.html</div></div></div>
+                    <div class="ide-content active">
+                        <span class="comm"><!-- Semantic Layout Pattern --></span><br>
+                        <span class="key">&lt;header&gt;</span><br>
+                        &nbsp;&nbsp;<span class="key">&lt;nav&gt;</span>...<span class="key">&lt;/nav&gt;</span><br>
+                        <span class="key">&lt;/header&gt;</span><br>
+                        <span class="key">&lt;main&gt;</span><br>
+                        &nbsp;&nbsp;<span class="key">&lt;section&gt;</span>...<span class="key">&lt;/section&gt;</span><br>
+                        <span class="key">&lt;/main&gt;</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- PAGE 5: CSS ARCHITECTURE -->
+        <section id="learning-css" class="page-section">
+            <span class="pill">Module 02: Styling</span>
+            <h2 class="section-title" style="text-align: left;">Responsive Engineering & CSS3</h2>
+            <div class="grid-12">
+                <div class="span-6 glass-card reveal">
+                    <h3 style="margin-bottom: 1.5rem;">Modern Layout Engine</h3>
+                    <p class="text-muted" style="margin-bottom: 2rem;">
+                        Transitioning from legacy float-based layouts to modern <strong>CSS Grid</strong> and <strong>Flexbox</strong>. Using a mobile-first approach to ensure seamless scaling across devices.
+                    </p>
+                    <div style="display:grid; gap:1.2rem;">
+                        <div style="display:flex; align-items:center; gap:15px;">
+                            <div style="width:40px; height:40px; border-radius:10px; background:rgba(99, 102, 241, 0.1); display:flex; align-items:center; justify-content:center; color:var(--secondary);">
+                                <i data-lucide="layout-grid" style="width:20px;"></i>
+                            </div>
+                            <div>
+                                <div style="font-size:0.9rem; font-weight:600;">Fractional Grid Systems</div>
+                                <div style="font-size:0.75rem; color:var(--text-muted);">Complex 12-column layouts with gap control.</div>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:15px;">
+                            <div style="width:40px; height:40px; border-radius:10px; background:rgba(245, 158, 11, 0.1); display:flex; align-items:center; justify-content:center; color:var(--accent);">
+                                <i data-lucide="smartphone" style="width:20px;"></i>
+                            </div>
+                            <div>
+                                <div style="font-size:0.9rem; font-weight:600;">Adaptive Media Queries</div>
+                                <div style="font-size:0.75rem; color:var(--text-muted);">Context-aware styling for ultra-wide to mobile.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span-6 glass-card reveal">
+                    <h5 style="margin-bottom:1.5rem; letter-spacing:1px; color:var(--secondary);">VARS & MAINTAINABILITY</h5>
+                    <p class="text-muted" style="font-size:0.85rem; line-height:1.8; margin-bottom: 1.5rem;">
+                        Implementing CSS Variables (Custom Properties) to create a themeable and maintainable design system. This allows for instant updates across the entire UI.
+                    </p>
+                    <div class="ide-widget" style="margin:0; box-shadow:none; border-color:rgba(255,255,255,0.03);">
+                        <div class="ide-content active" style="padding:1rem; font-size:0.75rem;">
+                            <span class="key">:root</span> {<br>
+                            &nbsp;&nbsp;--primary: <span class="str">#10b981</span>;<br>
+                            &nbsp;&nbsp;--glass: <span class="func">rgba</span>(<span class="num">10</span>, <span class="num">11</span>, <span class="num">16</span>, <span class="num">0.8</span>);<br>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="span-12 reveal" style="margin-top:2rem;">
+                    <div class="grid-3">
+                        <div class="stat-card">
+                            <i data-lucide="zap" style="color:var(--primary); margin-bottom:1rem;"></i>
+                            <h4 style="font-size:0.9rem;">Zero Frameworks</h4>
+                            <p style="font-size:0.7rem; color:var(--text-muted); margin-top:0.5rem;">Pure Vanilla CSS for performance and control.</p>
+                        </div>
+                        <div class="stat-card">
+                            <i data-lucide="layers" style="color:var(--secondary); margin-bottom:1rem;"></i>
+                            <h4 style="font-size:0.9rem;">BEM Methodology</h4>
+                            <p style="font-size:0.7rem; color:var(--text-muted); margin-top:0.5rem;">Scalable and predictable class naming.</p>
+                        </div>
+                        <div class="stat-card">
+                            <i data-lucide="box" style="color:var(--accent); margin-bottom:1rem;"></i>
+                            <h4 style="font-size:0.9rem;">Modern Box Model</h4>
+                            <p style="font-size:0.7rem; color:var(--text-muted); margin-top:0.5rem;">Exact sizing with border-box control.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 6: JAVASCRIPT DOM -->
+        <section id="learning-js" class="page-section">
+            <span class="pill">Module 03: Interactivity</span>
+            <h2 class="section-title" style="text-align: left;">JavaScript & DOM Manipulation</h2>
+            <div class="grid-12">
+                <div class="span-8 glass-card reveal">
+                    <h3 style="margin-bottom: 1.5rem;">Advanced DOM Engineering</h3>
+                    <p class="text-muted" style="line-height: 1.8; margin-bottom: 2rem;">
+                        My approach to JavaScript focuses on performance-first DOM interactions. By leveraging the **Intersection Observer API** and optimized **Event Delegation**, I ensure the UI remains fluid even with complex view transitions and heavy data logic.
+                    </p>
+                    <div class="grid-2" style="gap: 2rem;">
+                        <div>
+                            <h4 style="font-size:0.9rem; color:var(--primary); margin-bottom:1rem;">PERFORMANCE APIs</h4>
+                            <ul style="display:grid; gap:0.6rem; font-size: 0.8rem; color:var(--text-muted);">
+                                <li>• IntersectionObserver for lazy reveal</li>
+                                <li>• RequestAnimationFrame for smooth 60fps</li>
+                                <li>• Debounced event listeners</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="font-size:0.9rem; color:var(--primary); margin-bottom:1rem;">STATE & ROUTING</h4>
+                            <ul style="display:grid; gap:0.6rem; font-size: 0.8rem; color:var(--text-muted);">
+                                <li>• Hash-based History API management</li>
+                                <li>• Dynamic attribute binding</li>
+                                <li>• Clean component lifecycle hooks</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="span-4 glass-card reveal" style="border-top: 4px solid var(--primary);">
+                    <h5 style="margin-bottom:1.2rem; letter-spacing:1px; color:var(--primary);">TECH STACK</h5>
+                    <div style="display:grid; gap:1rem;">
+                        <span class="pill" style="margin:0; background:rgba(247,223,30,0.1); color:#f7df1e;">ES6 Modules</span>
+                        <span class="pill" style="margin:0;">Async/Await Flow</span>
+                        <span class="pill" style="margin:0;">Shadow DOM Logic</span>
+                    </div>
+                </div>
+                <div class="span-12 ide-widget reveal" style="margin-top:2rem;">
+                    <div class="ide-header"><div class="ide-tabs"><div class="ide-tab active">interaction.js</div></div></div>
+                    <div class="ide-content active">
+                        <span class="comm">// Simple DOM Event Interaction</span><br>
+                        <span class="key">const</span> btn = document.<span class="func">getElementById</span>(<span class="str">'actionBtn'</span>);<br>
+                        <span class="key">const</span> text = document.<span class="func">getElementById</span>(<span class="str">'statusText'</span>);<br>
+                        <br>
+                        btn.<span class="func">addEventListener</span>(<span class="str">'click'</span>, () => {<br>
+                        &nbsp;&nbsp;text.innerText = <span class="str">'Interactivity Enabled!'</span>;<br>
+                        &nbsp;&nbsp;text.style.color = <span class="str">'var(--primary)'</span>;<br>
+                        });
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 7: REACT JS HUB -->
+        <section id="learning-react" class="page-section">
+            <span class="pill">Module 04: Frameworks</span>
+            <h2 class="section-title" style="text-align: left;">React.js Ecosystem</h2>
+            <div class="grid-12">
+                <div class="span-12 glass-card reveal" style="background: linear-gradient(135deg, rgba(97,218,251,0.05) 0%, transparent 100%);">
+                    <div class="grid-2">
+                        <div>
+                            <h3>Component-Driven Development</h3>
+                            <p class="text-muted" style="margin:1.5rem 0; line-height:1.7;">
+                                Leveraging the power of React to build modular, declarative UIs. From basic Hook management to complex state propagation, I prioritize clean, reusable component logic.
+                            </p>
+                            <div style="display:flex; flex-wrap:wrap; gap:0.75rem;">
+                                <span class="pill" style="margin:0;">React 18</span>
+                                <span class="pill" style="margin:0;">Hooks (useState, useEffect)</span>
+                                <span class="pill" style="margin:0;">Vite Tooling</span>
+                                <span class="pill" style="margin:0;">Component Reusability</span>
+                            </div>
+                        </div>
+                        <div style="display:flex; flex-direction:column; gap:1rem; align-items:flex-end; justify-content:center;">
+                            <div style="text-align:right;">
+                                <div style="font-size:2rem; font-weight:800; color:#61dafb;">SPA</div>
+                                <div style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase;">Architecture</div>
+                            </div>
+                            <div style="text-align:right;">
+                                <div style="font-size:2rem; font-weight:800; color:#61dafb;">VIRTUAL</div>
+                                <div style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase;">DOM Management</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span-6 glass-card reveal">
+                    <h5 style="margin-bottom:1rem; color:#61dafb;">STATE MANAGEMENT</h5>
+                    <p class="text-muted" style="font-size:0.85rem;">Utilizing modern context providers and state hooks to maintain a single source of truth throughout the application lifecycle.</p>
+                </div>
+                <div class="span-6 glass-card reveal">
+                    <h5 style="margin-bottom:1rem; color:#61dafb;">ROUTING & NAVIGATION</h5>
+                    <p class="text-muted" style="font-size:0.85rem;">Declarative routing patterns using React Router to create seamless page transitions without full browser refreshes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 8: NODE.JS -->
+        <section id="learning-node" class="page-section">
+            <span class="pill">ASSIGNMENT 04 - EVAL 2</span>
+            <h2 class="section-title" style="text-align: left;">Node.js / Express Systems</h2>
+            <div class="grid-12">
+                <div class="span-12 glass-card reveal" style="margin-bottom: 2rem;">
+                    <h3>Standardizing REST Endpoints</h3>
+                    <p class="text-muted">Building secure and scalable backends requires a deep understanding of middleware chains and route controllers.</p>
+                </div>
+                <div class="span-12 table-scroll reveal">
+                    <table>
+                        <thead>
+                            <tr><th>Method</th><th>Endpoint</th><th>Description</th><th>Auth</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><span class="badge get">GET</span></td><td>/api/health</td><td>System health status check</td><td>No</td></tr>
+                            <tr><td><span class="badge post">POST</span></td><td>/api/users</td><td>Create new institutional account</td><td>No</td></tr>
+                            <tr><td><span class="badge put">PUT</span></td><td>/api/users/:id</td><td>Update account records</td><td>Yes</td></tr>
+                            <tr><td><span class="badge del">DEL</span></td><td>/api/users/:id</td><td>Sanitized record deletion</td><td>Admin</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="span-12 ide-widget reveal">
+                    <div class="ide-header"><div class="ide-tabs"><div class="ide-tab active">server.js</div></div></div>
+                    <div class="ide-content active">
+                        <span class="comm">// Express.js Minimal Server</span><br>
+                        <span class="key">const</span> express = <span class="func">require</span>(<span class="str">'express'</span>);<br>
+                        <span class="key">const</span> app = <span class="func">express</span>();<br>
+                        <br>
+                        app.<span class="func">get</span>(<span class="str">'/api/health'</span>, (req, res) => {<br>
+                        &nbsp;&nbsp;res.<span class="func">status</span>(<span class="num">200</span>).<span class="func">json</span>({ status: <span class="str">'active'</span> });<br>
+                        });<br>
+                        <br>
+                        app.<span class="func">listen</span>(<span class="num">3000</span>, () => console.<span class="func">log</span>(<span class="str">'Port 3000 Open'</span>));
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 9: PROJECT OVERVIEW -->
+        <section id="project-overview" class="page-section">
+            <span class="pill">Final Semester Project</span>
+            <h2 class="section-title" style="text-align: left;">Complaint Management System</h2>
+            <div class="grid-12">
+                <div class="span-12 glass-card reveal" style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1.5rem;">Mission: Digital Grievance Orchestration</h3>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        The <strong>Complaint Management System (CMS)</strong> is a comprehensive digital ecosystem engineered specifically for the administrative and student workflows at KLE Technological University. Our primary goal is to bridge the communication gap between the student body and university administration through a transparent, high-accountability platform.
+                    </p>
+                </div>
+
+                <div class="span-12 glass-card reveal">
+                    <h3 style="margin-bottom: 2rem; color:var(--primary);">System Objectives</h3>
+                    <div class="grid-2" style="gap: 2.5rem;">
+                        <div style="display:grid; gap:1.5rem;">
+                            <div>
+                                <h4 style="font-size:1rem; margin-bottom:0.5rem;">Digital Complaint Portal</h4>
+                                <p style="font-size:0.8rem; color:var(--text-muted);">Provide students and faculty a simple platform to register complaints anytime, anywhere using their institutional email.</p>
+                            </div>
+                            <div>
+                                <h4 style="font-size:1rem; margin-bottom:0.5rem;">Escalation Mechanism</h4>
+                                <p style="font-size:0.8rem; color:var(--text-muted);">Automatically escalate complaints unresolved beyond 5 working days directly to the HOD for priority resolution.</p>
+                            </div>
+                            <div>
+                                <h4 style="font-size:1rem; margin-bottom:0.5rem;">User Authentication</h4>
+                                <p style="font-size:0.8rem; color:var(--text-muted);">Secure registration and login using institutional credentials with strictly defined role-based access control.</p>
+                            </div>
+                            <div>
+                                <h4 style="font-size:1rem; margin-bottom:0.5rem;">Analytics & Reporting</h4>
+                                <p style="font-size:0.8rem; color:var(--text-muted);">Maintain a transparent record and generate high-level reports filtered by status, category, and date range.</p>
+                            </div>
+                        </div>
+                        <div style="display:grid; gap:1.5rem;">
+                            <div>
+                                <h4 style="font-size:1rem; margin-bottom:0.5rem;">Complaint Assignment</h4>
+                                <p style="font-size:0.8rem; color:var(--text-muted);">Enable admins to delegate complaints to the relevant department and set priority: Low, Medium, or High.</p>
+                            </div>
+                            <div>
+                                <h4 style="font-size:1rem; margin-bottom:0.5rem;">Anonymous Complaints</h4>
+                                <p style="font-size:0.8rem; color:var(--text-muted);">Support anonymous submission to protect student identity while maintaining grievance accountability and integrity.</p>
+                            </div>
+                            <div>
+                                <h4 style="font-size:1rem; margin-bottom:0.5rem;">Real-Time Status Tracking</h4>
+                                <p style="font-size:0.8rem; color:var(--text-muted);">Ensure students receive email notifications and in-app alerts upon every status change in the complaint lifecycle.</p>
+                            </div>
+                            <div>
+                                <h4 style="font-size:1rem; margin-bottom:0.5rem;">Improve Experience</h4>
+                                <p style="font-size:0.8rem; color:var(--text-muted);">Reduce complaint resolution time and improve overall student and staff satisfaction at KLE Technological University.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="project-analysis" class="page-section">
+            <span class="pill">Specifications</span>
+            <h2 class="section-title" style="text-align: left;">System Requirements</h2>
+            
+            <div class="grid-12">
+                <div class="span-12 glass-card reveal" style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 2rem; color:var(--primary);">Functional Requirements (FR)</h3>
+                    <div class="table-scroll">
+                        <table>
+                            <thead>
+                                <tr><th>ID</th><th>Requirement</th><th>Description</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>FR-01</td><td>User Authentication</td><td>Secure registration/login with institutional KLE email and role-based access.</td></tr>
+                                <tr><td>FR-02</td><td>Complaint Submission</td><td>Multi-category selection, description input, and optional photo upload.</td></tr>
+                                <tr><td>FR-03</td><td>Unique Complaint ID</td><td>Auto-generation of IDs (CMS-2025-001) with 'Pending' initial status.</td></tr>
+                                <tr><td>FR-04</td><td>Admin Assignment</td><td>Admin capability to delegate complaints to workers with priority levels.</td></tr>
+                                <tr><td>FR-05</td><td>Status Notifications</td><td>Real-time email and in-app alerts upon each status change.</td></tr>
+                                <tr><td>FR-06</td><td>Complaint History</td><td>User-specific logs to track status and full historical audit.</td></tr>
+                                <tr><td>FR-07</td><td>Admin Dashboard</td><td>Analytics dashboard filtered by status, category, and date range.</td></tr>
+                                <tr><td>FR-08</td><td>Auto Escalation</td><td>Automated escalation to HOD level if unresolved beyond 5 working days.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="span-12 glass-card reveal">
+                    <h3 style="margin-bottom: 2rem; color:var(--secondary);">Non-Functional Requirements (NFR)</h3>
+                    <div class="table-scroll">
+                        <table>
+                            <thead>
+                                <tr><th>ID</th><th>Category</th><th>Specification</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>NFR-01</td><td>Performance</td><td>Any page shall load within 2 seconds under normal network conditions.</td></tr>
+                                <tr><td>NFR-02</td><td>Security</td><td>Passwords stored as salted bcrypt hashes; 100% data transfer over HTTPS.</td></tr>
+                                <tr><td>NFR-03</td><td>Usability</td><td>Students shall be able to submit complaints without prior training.</td></tr>
+                                <tr><td>NFR-04</td><td>Reliability</td><td>99% availability during academic sessions (Mon-Sat, 08:00-18:00).</td></tr>
+                                <tr><td>NFR-05</td><td>Availability</td><td>Platform maintains high-uptime ensuring users can always track complaints.</td></tr>
+                                <tr><td>NFR-06</td><td>Privacy</td><td>Identity protection for anonymous complaint submissions.</td></tr>
+                                <tr><td>NFR-07</td><td>Maintainability</td><td>Modular, well-documented codebase for easy updates and bug fixes.</td></tr>
+                                <tr><td>NFR-08</td><td>Scalability</td><td>Architecture supports growth in users/complaints without redesign.</td></tr>
+                                <tr><td>NFR-09</td><td>Compliance</td><td>Compliance with UGC grievance redressal guidelines for higher education.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="project-design" class="page-section">
+            <span class="pill">Architecture</span>
+            <h2 class="section-title" style="text-align: left;">System Design & Documentation</h2>
+            
+            <div style="display:grid; gap:4rem;">
+                <!-- Card 1: 3-Tier architecture -->
+                <div class="glass-card reveal">
+                    <div class="grid-12" style="gap:3rem; align-items:start;">
+                        <div class="span-12" style="margin-bottom:2rem;">
+                            <div class="browser-mock">
+                                <div class="browser-top"> <div style="display:flex; gap:4px;"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div> </div>
+                                <div class="screen">
+                                    <img src="https://drive.google.com/thumbnail?id=1k8q_PE4su36suC_b4EIlE64dGNPNwMJU&sz=w1000" alt="System Architecture Overview" style="width:100%; height:auto; object-fit:contain;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span-12">
+                            <h3 style="color:var(--primary); margin-bottom:1.5rem;">Core Three-Tier Architecture</h3>
+                            <div style="display:grid; gap:2rem;">
+                                <div>
+                                    <h4 style="font-size:0.9rem; color:var(--text); margin-bottom:0.5rem;">Tier 1 — Client Layer (React.js + Vite + Tailwind CSS)</h4>
+                                    <p class="text-muted" style="line-height:1.8; font-size:0.85rem;">
+                                        The Client Layer forms the presentation tier of the CMS. Built entirely with React.js and bundled via Vite, it runs entirely inside the student or admin's browser without any server-side rendering. React components manage all UI state locally — complaint form inputs, dashboard filters, notification badge counts — using useState and useEffect hooks. Tailwind CSS drives the responsive layout, ensuring the interface adapts cleanly from desktop dashboards to mobile complaint submission forms. The client communicates with the backend exclusively through HTTP REST API calls, attaching a JWT Bearer token in every request header to prove the user's authenticated identity and role. This strict separation means the frontend has zero direct access to the database — it only receives what the API permits, which is a foundational security principle of client-server design.
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4 style="font-size:0.9rem; color:var(--text); margin-bottom:0.5rem;">Tier 2 — Application Layer (Node.js + Express.js)</h4>
+                                    <p class="text-muted" style="line-height:1.8; font-size:0.85rem;">
+                                        The Application Layer is the intelligence of the system. The Express.js server runs on Node.js at PORT 5000 with CORS configured to accept only trusted frontend origins. Every incoming HTTP request passes through the JWT authentication middleware first — if the token is missing, expired, or tampered with, the request is rejected immediately before any business logic runs. Valid requests then reach the appropriate route handler, where the core logic executes: creating complaint records with unique IDs, assigning workers, triggering the auto-escalation scheduler for complaints older than five working days, sending real-time notifications through the Notification Service, and generating PDF or Excel reports on demand. The application layer acts as a strict gatekeeper — students cannot access admin routes, workers cannot see other departments' complaints, and HODs only see escalated cases. This role-based logic lives entirely in this tier, protecting data integrity from both the client and the database sides.
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4 style="font-size:0.9rem; color:var(--text); margin-bottom:0.5rem;">Tier 3 — Data Layer (MongoDB + Mongoose ODM)</h4>
+                                    <p class="text-muted" style="line-height:1.8; font-size:0.85rem;">
+                                        The Data Layer provides persistent, structured storage through MongoDB's complaint_cms database. Mongoose ODM defines strict schemas for every collection — students, faculty, admins, workers, complaints, notifications, and files — ensuring that malformed or incomplete documents are rejected before they ever reach the database. Complaint records store their full lifecycle: submission timestamp, category, description, assigned worker reference, priority level, current status, anonymous flag, and escalation state. This design means the entire history of every complaint is preserved permanently, enabling admins to generate accurate analytical reports filtered by date range, category, or department at any point in time.
+                                    </p>
+                                </div>
+                                <div style="background:rgba(255,255,255,0.01); padding:2rem; border-radius:12px; border:1px solid var(--border);">
+                                    <h4 style="font-size:0.9rem; color:var(--primary); margin-bottom:0.5rem;">Why This Architecture Fits the CMS</h4>
+                                    <p class="text-muted" style="line-height:1.8; font-size:0.85rem;">
+                                        The three-tier separation delivers practical advantages specifically suited to an institutional grievance system. Independent scaling means that if complaint submissions spike during exam season, only the application server needs horizontal scaling — the React frontend served via CDN and the MongoDB Atlas cluster remain unaffected. Security is enforced at the application boundary, not the client, so there is no risk of a student manipulating browser code to access admin data. The clean API contract between tiers also allowed the team to develop and test the React frontend and the Express backend in parallel using mocked API responses, which accelerated the development timeline significantly under the academic sprint schedule.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Sequence Complaint Submission -->
+                <div class="glass-card reveal">
+                    <div class="grid-12" style="gap:3rem; align-items:start;">
+                        <div class="span-12" style="margin-bottom:2rem;">
+                            <div class="browser-mock">
+                                <div class="browser-top"> <div style="display:flex; gap:4px;"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div> </div>
+                                <div class="screen">
+                                    <img src="https://drive.google.com/thumbnail?id=1AT3JHlshFWo2fVxYMcgUMBJs_ZSpBhBV&sz=w1000" alt="Complaint Submission Flow" style="width:100%; height:auto; object-fit:contain;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span-12">
+                            <h3 style="color:var(--secondary); margin-bottom:1.5rem;">Sequence Diagram 1: Complaint Submission Flow</h3>
+                            <p class="text-muted" style="line-height:1.8; font-size:0.85rem;">
+                                This diagram traces the complete lifecycle of a complaint from the moment a student clicks Submit to the point their dashboard refreshes with the new complaint card. The flow begins entirely on the client side — the React frontend collects the form data (category, description, anonymous toggle) and packages it as a JSON body alongside the stored Bearer token in the Authorization header, then fires a POST /api/complaints request to the Express API. The Express server does not touch any database immediately — the JWT Middleware intercepts the request first, extracts the token, verifies its signature against the server's JWT_SECRET, and checks that the decoded role is either student or faculty. Only after that role check passes does the middleware call next(), forwarding the request to the complaint route handler. The Complaint Model then executes Complaint.create() with the validated payload, generating a unique complaint ID in the format CMS-2025-001 and writing the document to MongoDB with an initial status of Pending. Once the database confirms the save, the Notification Service is triggered asynchronously — it dispatches a real-time in-app alert and an email notification to the student confirming successful submission. Finally, the API returns a 201 Created response containing the complaint ID back to the React frontend, which uses it to immediately refresh the student dashboard so the new complaint card appears without requiring a full page reload. This unidirectional, layered flow ensures that authentication always precedes data access and that no complaint is created without a verified, role-confirmed identity behind it.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Sequence Login & Auth -->
+                <div class="glass-card reveal">
+                    <div class="grid-12" style="gap:3rem; align-items:start;">
+                        <div class="span-12" style="margin-bottom:2rem;">
+                            <div class="browser-mock">
+                                <div class="browser-top"> <div style="display:flex; gap:4px;"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div> </div>
+                                <div class="screen">
+                                    <img src="https://drive.google.com/thumbnail?id=1FlZtSHBdrIE98Z0Ft_hri6ZqvEt1n0QV&sz=w1000" alt="Authentication Auth Flow" style="width:100%; height:auto; object-fit:contain;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span-12">
+                            <h3 style="color:var(--accent); margin-bottom:1.5rem;">Sequence Diagram 2: Authentication & Token Issuance Flow</h3>
+                            <p class="text-muted" style="line-height:1.8; font-size:0.85rem;">
+                                This diagram describes how a user of any role — student, faculty, admin, HOD, or worker — is authenticated into the system using a single unified login endpoint. The user enters their institutional KLE email and password in the React frontend login form, which packages them into a JSON body and sends a POST /api/login request to the Express /login route. Because the CMS has five distinct user roles stored across five separate MongoDB collections, the User Model runs a findOne({ email }) query across all role collections simultaneously — if the email belongs to a student, the student document is returned; if it belongs to an admin, the admin document comes back instead. This multi-role lookup pattern means the system needs only one login endpoint instead of five separate ones, reducing API surface area and simplifying the client-side logic. Once the matching user document is retrieved with its stored password_hash, the password the user typed is passed to bcrypt.compare(), which rehashes it with the same salt and checks it against the stored hash — this comparison is deliberately slow by design (SALT_ROUNDS=12) to make brute-force attacks computationally expensive. If bcrypt.compare() returns true, the Express server calls jwt.sign() with the user's ID, email, and role embedded in the payload, signed with the JWT_SECRET, and set to expire after 7 days. The resulting token is sent back in a 200 OK response alongside the user's role. The React frontend stores this token in memory and uses it to redirect the user to their role-specific dashboard — the student sees their complaints, the admin sees the full management panel, and the HOD sees only escalated cases. From this point forward, every API request the user makes will carry this token, and the JWT Middleware will use it to verify their identity without ever querying the database again for authentication purposes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="project-showcase" class="page-section">
+            <span class="pill">Visual Gallery</span>
+            <h2 class="section-title" style="text-align: left;">UI/UX Module Showcase</h2>
+            <div class="grid-12">
+                <!-- 1. Student Dashboard -->
+                <div class="span-6 glass-card reveal">
+                    <div class="browser-mock" style="margin-bottom:1.5rem;">
+                        <div class="browser-top"> <div style="display:flex; gap:4px;"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div> </div>
+                        <div class="screen">
+                            <img src="https://drive.google.com/thumbnail?id=11S1inTyX78Ve6zj9ZTosEcohQfJ9xAy9&sz=w1000" alt="Student Dashboard" style="width:100%; height:auto; object-fit:contain;">
+                        </div>
+                    </div>
+                    <h4>1. Student & Faculty Dashboard</h4>
+                    <p class="text-muted" style="font-size:0.8rem; line-height:1.6;">The student dashboard serves as the central home screen for students and faculty after login. It opens with a personalized welcome banner displaying the user's name, USN, and department, alongside a prominent "Create New Grievance" button. Below the banner, an interactive summary grid shows four real-time statistics — Total Lodged, Pending Review, In Progress, and Resolved — each card is clickable and navigates directly to a filtered complaints list.</p>
+                </div>
+
+                <!-- 2. Complaint Form -->
+                <div class="span-6 glass-card reveal">
+                    <div class="browser-mock" style="margin-bottom:1.5rem;">
+                        <div class="browser-top"> <div style="display:flex; gap:4px;"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div> </div>
+                        <div class="screen">
+                            <img src="https://drive.google.com/thumbnail?id=1tlrxjQ3UZ1ivvtcOt_6BnG_GVYjpVXQy&sz=w1000" alt="Complaint Form" style="width:100%; height:auto; object-fit:contain;">
+                        </div>
+                    </div>
+                    <h4>2. Digital Grievance Submission</h4>
+                    <p class="text-muted" style="font-size:0.8rem; line-height:1.6;">A structured interface for filing new grievances. At the top, a visual category selector grid presents 12 complaint types (Academic, Hostel, Canteen, etc.) with representative icons. Includes a file attachment zone for uploading photo evidence and an anonymity toggle to protect student identity while maintaining accountability through the institutional backend.</p>
+                </div>
+
+                <!-- 3. Complaint Status Tracking -->
+                <div class="span-12 glass-card reveal">
+                    <div class="browser-mock" style="margin-bottom:1.5rem;">
+                        <div class="browser-top"> <div style="display:flex; gap:4px;"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div> </div>
+                        <div class="screen">
+                            <img src="https://drive.google.com/thumbnail?id=1iV9eNPbcb3AwTc6aH5aZme1MRPbWv-rY&sz=w1000" alt="Complaint Status Tracking" style="width:100%; height:auto; object-fit:contain;">
+                        </div>
+                    </div>
+                    <h4>3. Real-Time Status & Lifecycle Tracking</h4>
+                    <p class="text-muted" style="font-size:0.8rem; line-height:1.6;">Full audit view of a grievance ticket. Displays reference ID, priority levels, and SLA windows. A vertical timeline tracks progression — Submitted → Prioritized → Assigned → In Progress → Resolved — with timestamps. Features red escalation banners for HOD-level interventions and technician assignment cards, ensuring 100% transparency for the student.</p>
+                </div>
+
+                <!-- 4. Main Admin Allocation -->
+                <div class="span-6 glass-card reveal">
+                    <div class="browser-mock" style="margin-bottom:1.5rem;">
+                        <div class="browser-top"> <div style="display:flex; gap:4px;"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div> </div>
+                        <div class="screen">
+                            <img src="https://drive.google.com/thumbnail?id=1IX14xrg4vKSS9pBh5xC9ow6MA5Kfj1PA&sz=w1000" alt="Main Admin Allocation" style="width:100%; height:auto; object-fit:contain;">
+                        </div>
+                    </div>
+                    <h4>4. Main Admin — Triage Console</h4>
+                    <p class="text-muted" style="font-size:0.8rem; line-height:1.6;">Central dispatch for the supervisor. Each unassigned complaint card allows the admin to set urgency (Low/High), select specialized workers, and set SLA deadlines. Includes "Delegate Admin" controls to route complaints to specific category HODs, ensuring high-level oversight and load balancing across departments.</p>
+                </div>
+
+                <!-- 5. Category Admin Allocation -->
+                <div class="span-6 glass-card reveal">
+                    <div class="browser-mock" style="margin-bottom:1.5rem;">
+                        <div class="browser-top"> <div style="display:flex; gap:4px;"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div> </div>
+                        <div class="screen">
+                            <img src="https://drive.google.com/thumbnail?id=1WYjfcCC4t2qCD40LqFakRhK_b_Wg1vsi&sz=w1000" alt="Category Admin Allocation" style="width:100%; height:auto; object-fit:contain;">
+                        </div>
+                    </div>
+                    <h4>5. Category Admin — Scoped Allocation</h4>
+                    <p class="text-muted" style="font-size:0.8rem; line-height:1.6;">Role-based view for HODs scoped to specific categories (e.g., Hostel, IT). This streamlined panel focuses on assigning workers and setting priorities within their own domain. This two-tier structure maintains accountability by domain, keeping routing organized across specialized areas of institutional operations.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="project-implementation" class="page-section">
+            <span class="pill">Implementation</span>
+            <h2 class="section-title" style="text-align: left;">High-Performance Engineering</h2>
+            <div class="grid-12">
+                <div class="span-12 glass-card reveal" style="margin-bottom: 2.5rem;">
+                    <h3>Technical Stack Integration</h3>
+                    <p class="text-muted" style="line-height: 1.8; margin-top: 1rem;">
+                        The CMS project is built on a modern MERN (MongoDB, Express, React, Node.js) foundation, optimized for institutional scalability. My implementation leverages a Tier-3 Client-Server architecture where the frontend (Client) communicates with the Node.js server via a RESTful API. This approach ensures that university data is never exposed directly and all operations are mediated by secure controllers.
+                    </p>
+                    <div class="grid-3" style="gap: 2rem; margin-top: 2rem;">
+                        <div>
+                            <h4 style="color:var(--primary); font-size:1rem; margin-bottom:0.8rem;">Security (JWT & Bcrypt)</h4>
+                            <p style="font-size:0.75rem; color:var(--text-muted);">
+                                We utilize Bcrypt for one-way salting and hashing of passwords, ensuring zero plaintext storage. Session management is handled via JSON Web Tokens (JWT), enabling stateless, role-based authorization across all API endpoints.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 style="color:var(--secondary); font-size:1rem; margin-bottom:0.8rem;">Data (Base64 Imaging)</h4>
+                            <p style="font-size:0.75rem; color:var(--text-muted);">
+                                To simplify evidence management, complaint images are converted to Base64 strings. This allows us to store visual evidence directly within MongoDB collections, eliminating the need for external S3 buckets for initial deployment.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 style="color:var(--accent); font-size:1rem; margin-bottom:0.8rem;">State (React Hooks)</h4>
+                            <p style="font-size:0.75rem; color:var(--text-muted);">
+                                The frontend leverages Advanced React Hooks (useState, useEffect, useMemo) to manage complex multi-role dashboards and real-time form validations without performance bottlenecks.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="span-12 glass-card reveal" style="margin-bottom: 2.5rem; border-left: 4px solid #ef4444;">
+                    <h3 style="color:#ef4444; margin-bottom:1.5rem;">The Engineering Challenges</h3>
+                    <div class="grid-2" style="gap:2.5rem;">
+                        <div>
+                            <h4 style="font-size:1.1rem; margin-bottom:0.8rem;">Binary Storage & Portability</h4>
+                            <p class="text-muted" style="font-size:0.85rem; line-height:1.7;">
+                                One of the most significant hurdles was managing student-uploaded evidence without a dedicated file server. I solved this by implementing <strong>Base64 Data Streams</strong>, encoding image buffers into strings that could be natively stored in MongoDB. This ensured the entire project remained portable and easy to deploy on institutional cloud tiers.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 style="font-size:1.1rem; margin-bottom:0.8rem;">Complex Role-Based Routing</h4>
+                            <p class="text-muted" style="font-size:0.85rem; line-height:1.7;">
+                                Synchronizing the view for five distinct user types (Student, faculty, Admin, HOD, Worker) while maintaining a single SPA route required advanced React lifecycle management. Ensuring that an HOD sees escalated complaints while a Worker only sees assigned ones was a major test of data filtering and conditional rendering logic.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frontend Snippet -->
+                <div class="span-6 glass-card reveal">
+                    <h5 style="margin-bottom:1rem; color:var(--primary);">FRONTEND STATE LOGIC</h5>
+                    <div class="ide-widget" style="margin:0;">
+                        <div class="ide-header"><div class="ide-tabs"><div class="ide-tab active">ComplaintForm.jsx</div></div></div>
+                        <div class="ide-content active" style="font-size:0.7rem;">
+                            <span class="key">const</span> <span class="func">handleImage</span> = (e) => {<br>
+                            &nbsp;&nbsp;<span class="key">const</span> reader = <span class="key">new</span> <span class="func">FileReader</span>();<br>
+                            &nbsp;&nbsp;reader.<span class="func">readAsDataURL</span>(e.target.files[0]);<br>
+                            &nbsp;&nbsp;reader.onloadend = () => <span class="func">setBase64</span>(reader.result);<br>
+                            };
+                        </div>
+                    </div>
+                </div>
+                <!-- Backend Snippet -->
+                <div class="span-6 glass-card reveal">
+                    <h5 style="margin-bottom:1rem; color:var(--secondary);">BACKEND MIDDLEWARE</h5>
+                    <div class="ide-widget" style="margin:0;">
+                        <div class="ide-header"><div class="ide-tabs"><div class="ide-tab active">auth.js</div></div></div>
+                        <div class="ide-content active" style="font-size:0.7rem;">
+                            <span class="key">const</span> <span class="func">protect</span> = <span class="key">async</span> (req, res, next) => {<br>
+                            &nbsp;&nbsp;token = req.headers.authorization.<span class="func">split</span>(' ')[1];<br>
+                            &nbsp;&nbsp;<span class="key">const</span> decoded = jwt.<span class="func">verify</span>(token, secret);<br>
+                            &nbsp;&nbsp;req.user = <span class="key">await</span> User.<span class="func">findById</span>(decoded.id);<br>
+                            &nbsp;&nbsp;<span class="func">next</span>();<br>
+                            };
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="project-testing" class="page-section">
+            <span class="pill">Requirements & Testing</span>
+            <h2 class="section-title" style="text-align: left;">System Verification Suite</h2>
+            
+            <div class="table-scroll reveal">
+                <table>
+                    <thead>
+                        <tr><th>Req</th><th>ID</th><th>Description</th><th>Steps</th><th>Test Data</th><th>Expected Result</th><th>P/F</th></tr>
+                    </thead>
+                    <tbody style="font-size: 0.7rem;">
+                        <tr><td>RE01</td><td>TC01</td><td>Valid Student Login</td><td>1. Go to app, 2. Enter email/pass, 3. Click Login</td><td>Email: student@kletech.ac.in</td><td>User reaches Dashboard</td><td>✓ Pass</td></tr>
+                        <tr><td>RE01</td><td>TC02</td><td>Invalid Password</td><td>1. Enter correct email, 2. Wrong pass, 3. Login</td><td>Pass: wrongpass</td><td>Error shown; Login blocked</td><td>✓ Pass</td></tr>
+                        <tr><td>RE01</td><td>TC03</td><td>Empty Fields</td><td>1. Leave email/pass blank, 2. Click Login</td><td>(null)</td><td>'Please fill all fields' prompt</td><td>✓ Pass</td></tr>
+                        <tr><td>RE01</td><td>TC04</td><td>Unregistered Email</td><td>1. Enter email not in DB, 2. Any pass, 3. Login</td><td>nobody@kletech.ac.in</td><td>'Invalid credentials' error</td><td>✓ Pass</td></tr>
+                        <tr><td>RE01</td><td>TC05</td><td>Admin Routing</td><td>1. Enter admin creds, 2. Click Login</td><td>admin@kletech.ac.in</td><td>Loads Admin Dashboard</td><td>✓ Pass</td></tr>
+                        <tr><td>RE01</td><td>TC06</td><td>HOD Routing</td><td>1. Enter HOD creds, 2. Click Login</td><td>hod@kletech.ac.in</td><td>Loads HOD Dashboard</td><td>✓ Pass</td></tr>
+                        <tr><td>RE01</td><td>TC07</td><td>Worker Routing</td><td>1. Enter worker creds, 2. Click Login</td><td>worker@kletech.ac.in</td><td>Loads Worker Dashboard</td><td>✓ Pass</td></tr>
+                        <tr><td>RE02</td><td>TC08</td><td>Submit Valid Complaint</td><td>1. Login student, 2. New Complaint, 3. Fill form, 4. Submit</td><td>Cat: Canteen, Subj: Poor food</td><td>ID generated (CMS-2025-XXX)</td><td>✓ Pass</td></tr>
+                        <tr><td>RE02</td><td>TC09</td><td>Empty Subject</td><td>1. Login, 2. Leave subject blank, 3. Submit</td><td>Subj: (blank)</td><td>Validation error; submission blocked</td><td>✓ Pass</td></tr>
+                        <tr><td>RE02</td><td>TC10</td><td>Anonymous Submission</td><td>1. Login, 2. Toggle Anonymous ON, 3. Submit</td><td>Anon: true, Cat: Academic</td><td>Student identity hidden from admin</td><td>✓ Pass</td></tr>
+                        <tr><td>RE02</td><td>TC11</td><td>Photo Upload</td><td>1. Login, 2. Fill form, 3. Upload .jpg, 4. Submit</td><td>Photo: evidence.jpg (200KB)</td><td>Saved with evidence file ID</td><td>✓ Pass</td></tr>
+                        <tr><td>RE02</td><td>TC12</td><td>Invalid File Type</td><td>1. Login, 2. Attach PDF, 3. Submit</td><td>File: doc.pdf</td><td>Error: Only image files accepted</td><td>✓ Pass</td></tr>
+                        <tr><td>RE03</td><td>TC13</td><td>Admin Assign Worker</td><td>1. Login admin, 2. Open pending, 3. Select worker, 4. Assign</td><td>Worker: worker@kletech.ac.in</td><td>Status -> In-Progress; worker notified</td><td>✓ Pass</td></tr>
+                        <tr><td>RE03</td><td>TC14</td><td>Set Priority: High</td><td>1. Login admin, 2. Open complaint, 3. Set Priority: High, 4. Save</td><td>Priority: High</td><td>Priority saved; visible in dashboard</td><td>✓ Pass</td></tr>
+                        <tr><td>RE03</td><td>TC15</td><td>Filter by Status</td><td>1. Login admin, 2. Select filter: In-Progress, 3. Apply</td><td>Filter: In-Progress</td><td>Only in-progress complaints shown</td><td>✓ Pass</td></tr>
+                        <tr><td>RE03</td><td>TC16</td><td>Set Completion Date</td><td>1. Login admin, 2. Open complaint, 3. Set target date, 4. Save</td><td>Date: 7 days from now</td><td>SLA deadline saved and visible</td><td>✓ Pass</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="certificate" class="page-section">
+            <h2 class="section-title">Professional Certification</h2>
+            <div class="grid-2" style="align-items: stretch;">
+                <div class="glass-card reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <span class="pill">Verified Credentials</span>
+                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">DevOps Foundations</h3>
+                        <p class="text-muted" style="margin-bottom: 2rem; line-height: 1.8;">
+                            Professional validation of cross-functional expertise in streamlining software delivery through automation and infrastructure-as-code principles.
+                        </p>
+                    </div>
+                    
+                    <div style="display:grid; gap:1.5rem;">
+                        <div style="display:flex; align-items:center; gap:15px; padding:1rem; background:rgba(255,255,255,0.02); border-radius:12px; border:1px solid var(--border);">
+                            <div style="background:rgba(16, 185, 129, 0.1); width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center;">
+                                <i data-lucide="git-merge" style="width:20px; color:var(--primary);"></i>
+                            </div>
+                            <div>
+                                <h5 style="font-size:0.85rem; margin-bottom:2px;">CI/CD Pipelines</h5>
+                                <p style="font-size:0.7rem; color:var(--text-muted);">Automation of deployment workflows</p>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:15px; padding:1rem; background:rgba(255,255,255,0.02); border-radius:12px; border:1px solid var(--border);">
+                            <div style="background:rgba(16, 185, 129, 0.1); width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center;">
+                                <i data-lucide="container" style="width:20px; color:var(--primary);"></i>
+                            </div>
+                            <div>
+                                <h5 style="font-size:0.85rem; margin-bottom:2px;">Docker & Containers</h5>
+                                <p style="font-size:0.7rem; color:var(--text-muted);">Isolated environment orchestration</p>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:15px; padding:1rem; background:rgba(255,255,255,0.02); border-radius:12px; border:1px solid var(--border);">
+                            <div style="background:rgba(16, 185, 129, 0.1); width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center;">
+                                <i data-lucide="monitor" style="width:20px; color:var(--primary);"></i>
+                            </div>
+                            <div>
+                                <h5 style="font-size:0.85rem; margin-bottom:2px;">Infrastructure Monitoring</h5>
+                                <p style="font-size:0.7rem; color:var(--text-muted);">Real-time system health tracking</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
+                        <span style="font-size:0.65rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;">ID: DEVOPS-VER-2025</span>
+                        <i data-lucide="award" style="color:var(--primary); width:24px;"></i>
+                    </div>
+                </div>
+                <div class="browser-mock reveal">
+                    <div class="browser-top"> <div style="display:flex; gap:4px;"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div> </div>
+                    <div class="screen">
+                        <img src="https://drive.google.com/thumbnail?id=1NiqkfR4Y2r3AJSNeA2t4DqWRorlTzR68&sz=w1000" alt="DevOps Certificate" style="width:100%; height:auto; object-fit:contain; border-radius:4px;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reflection" class="page-section">
+            <h2 class="section-title">Retrospective & Full-Stack Learnings</h2>
+            <div class="glass-card reveal" style="border-left: 6px solid var(--secondary);">
+                <div class="grid-2">
+                    <div>
+                        <h3>The Academic Evolution</h3>
+                        <p class="text-muted" style="line-height: 1.8; margin-top: 1.5rem;">
+                            The CMS project was a transformative experience where I mastered high-level full-stack engineering concepts beyond just basic syntax. 
+                        </p>
+                        <h4 style="color:var(--primary); margin-top:1.5rem; font-size:0.9rem;">NEW TECHNOLOGIES MASTERED</h4>
+                        <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.8rem;">
+                            <span class="pill">Base64 Data Streams</span>
+                            <span class="pill">JWT Stateless Auth</span>
+                            <span class="pill">Bcrypt Hashing</span>
+                            <span class="pill">Mongoose Middleware</span>
+                            <span class="pill">React Context API</span>
+                        </div>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.02); padding:2rem; border-radius:16px; border:1px solid var(--border);">
+                        <h4 style="color:var(--primary); margin-bottom:1rem;">KEY TAKEAWAYS</h4>
+                        <ul style="display:grid; gap:1.7rem; font-size: 0.85rem; color:var(--text-muted);">
+                            <li><strong>Base64 Integration</strong>: Learned to handle binary image data as manageable data strings within the document DB. This completely resolved my initial struggle with direct binary storage and improved site portability significantly.</li>
+                            <li><strong>Institutional Security</strong>: Implemented industry-standard Bcrypt/JWT flows, which taught me the critical importance of hashing passwords and protecting sensitive institutional data against unauthorized access.</li>
+                            <li><strong>Lifecycle Engineering</strong>: Gained end-to-end transparency from frontend state to backend persistent storage, specifically learning how to manage complex user roles like HODs and Admins within a single application tree.</li>
+                            <li><strong>UI/UX Strategy</strong>: Designing intuitive dashboards that balance the need for data depth (for Admins) with simplicity (for Students) has fundamentally changed how I approach interface design.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 8rem; text-align: center; font-size: 0.75rem; color: var(--text-muted); opacity:0.5;">
+                © 2025 Dron G Kambali · Powered by Web Intelligence & KLE Tech Standards
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // High-Performance SPA Router
+        const router = () => {
+            const hash = window.location.hash.replace('#', '') || 'home';
+            
+            // Section Toggling with Animation Sync
+            document.querySelectorAll('.page-section').forEach(s => {
+                s.style.display = (s.id === hash) ? 'block' : 'none';
+                if (s.id === hash) {
+                    window.scrollTo(0, 0);
+                    setTimeout(() => s.classList.add('active'), 50);
+                } else {
+                    s.classList.remove('active');
+                }
+            });
+            
+            // Navigation State Sync
+            document.querySelectorAll('.nav-item').forEach(link => {
+                const isActive = link.getAttribute('href') === '#' + hash;
+                link.classList.toggle('active', isActive);
+            });
+
+            // Re-initialize Lucide Icons
+            lucide.createIcons();
+        };
+
+        // Optimized Intersection Observer for Scroll Reveals
+        const initReveal = () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        };
+
+        // UI Interactions
+        const toggleDrawer = () => document.getElementById('mobileDrawer').classList.toggle('open');
+
+        // IDE Tab Switching Logic
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('ide-tab')) {
+                const widget = e.target.closest('.ide-widget');
+                widget.querySelectorAll('.ide-tab').forEach(t => t.classList.remove('active'));
+                widget.querySelectorAll('.ide-content').forEach(c => c.classList.remove('active'));
+                e.target.classList.add('active');
+                widget.querySelector('.ide-content').classList.add('active');
+            }
+        });
+
+        // Lifecycle Events
+        window.addEventListener('hashchange', router);
+        document.addEventListener('DOMContentLoaded', () => {
+            router();
+            initReveal();
+        });
+    </script>
+</body>
+</html>
